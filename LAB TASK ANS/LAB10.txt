@@ -1,0 +1,131 @@
+#include <iostream>
+#include <string>
+#include <stack>
+#include "stacktype.cpp"
+
+using namespace std;
+
+int precedence(char c){
+    if(c == '+'||c == '-')
+    return 1;
+    if(c == '*'||c == '/')
+    return 2;
+    return 0;
+}
+
+float applyOp(float a, float b, char c){
+    switch(c){
+        case '+': return a + b;
+        case '-': return a - b;
+        case '*': return a * b;
+        case '/': return a / b;
+    }
+}
+
+float evaluate(string str){
+    int i;
+
+    Stack<float> values;
+    Stack<char> ops;
+
+    for(i = 0; i < str.length(); i++){
+
+        if(str[i] == ' ')
+            continue;
+
+        else if(str[i] == '('){
+            ops.Push(str[i]);
+        }
+
+        else if(isdigit(str[i])){
+            float val = 0;
+
+            while(i < str.length() &&
+                        isdigit(str[i]))
+            {
+                val = (val*10) + (str[i]-'0');
+                i++;
+            }
+
+            values.Push(val);
+            i--;
+        }
+
+        else if(str[i] == ')')
+        {
+            while(!ops.IsEmpty() && ops.Top() != '(')
+            {
+                float val2 = values.Top();
+                values.Pop();
+
+                float val1 = values.Top();
+                values.Pop();
+
+                char c = ops.Top();
+                ops.Pop();
+
+                values.Push(applyOp(val1, val2, c));
+            }
+
+            if(!ops.IsEmpty())
+               ops.Pop();
+        }
+
+        else
+        {
+            while(!ops.IsEmpty() && precedence(ops.Top()) >= precedence(str[i])){
+                float val2 = values.Top();
+                values.Pop();
+
+                float val1 = values.Top();
+                values.Pop();
+
+                char c = ops.Top();
+                ops.Pop();
+
+                values.Push(applyOp(val1, val2, c));
+            }
+
+            ops.Push(str[i]);
+        }
+    }
+
+    while(!ops.IsEmpty()){
+        float val2 = values.Top();
+        values.Pop();
+
+        float val1 = values.Top();
+        values.Pop();
+
+        char c = ops.Top();
+        ops.Pop();
+
+        values.Push(applyOp(val1, val2, c));
+    }
+
+    return values.Top();
+}
+
+int main() {
+    try {
+       cout << "Input result 1 is " << evaluate("10 + 3 * 5 / (16 - 4)") << endl;
+    } catch (...) {
+        cout << "Input result is 1 Invalid Expression" << endl;
+    }
+     try {
+      cout << "Input result 2 is " << evaluate("(5 + 3) * 12 / 3") << endl;
+    } catch (...) {
+        cout << "Input result is 2 Invalid Expression" << endl;
+    }
+    try {
+        cout << "Input result 3 is " << evaluate("3 + 4 / (2 - 3) * / 5") << endl;
+    } catch (...) {
+        cout << "Input result 3 is Invalid Expression" << endl;
+    }
+    try {
+        cout << "Input result 4 is " << evaluate("7 / 5 + (4 - (2) * 3") << endl;
+    } catch (...) {
+        cout << "Input result 4 is Invalid Expression" << endl;
+    }
+    return 0;
+}

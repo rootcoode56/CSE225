@@ -1,0 +1,94 @@
+//studentInfo.h//
+
+#ifndef STUDENTINFO_H_INCLUDED
+#define STUDENTINFO_H_INCLUDED
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class studentInfo {
+private:
+    int studentID;
+    string studentName;
+    double studentCGPA;
+
+    //Function for execution//
+public:
+    studentInfo(int id, string name, double cgpa);
+    void printInfo() const;
+    int getID() const;
+    bool operator==(int id) const;
+};
+
+#endif // STUDENTINFO_H_INCLUDED
+
+
+//studentInfo.cpp//
+
+#include "studentInfo.h"
+using namespace std;
+
+//StudentInfo for showing informations//
+studentInfo::studentInfo(int id, string name, double cgpa) : studentID(id), studentName(name), studentCGPA(cgpa) {}
+
+void studentInfo::printInfo() const {
+    cout << studentID << ", " << studentName << ", " << studentCGPA <<endl;
+}
+
+int studentInfo::getID() const {
+    return studentID;
+}
+
+bool studentInfo::operator==(int id) const {
+    return studentID == id;
+}
+
+
+//main.cpp//
+
+#include "studentInfo.cpp"
+using namespace std;
+
+int main() {
+    //Input all the information of students//
+    studentInfo students[5] = {
+        studentInfo(15234, "Jon", 2.6),
+        studentInfo(13732, "Tyrion", 3.9),
+        studentInfo(13569, "Sandor", 1.2),
+        studentInfo(15467, "Ramsey", 3.1),
+        studentInfo(16285, "Arya", 3.1)
+    };
+
+    // Delete the record of the ID 15467//
+    for (int i = 0; i < 5; ++i) {
+        if (students[i] == 15467) {
+            // Reseting the record//
+            students[i] = studentInfo(0, "", 0);
+            break;
+        }
+    }
+
+    // Retrieve the record with ID 13569 with printing whether found or not along with the entire info//
+    bool found = false;
+    for (const auto& student : students) {
+        if (student == 13569) {
+            found = true;
+            cout << "The Item is found in the list:" <<endl;
+            student.printInfo();
+            cout<<"\n";
+            cout<<"Now the remaing list members:"<<endl;
+            break;
+        }
+    }
+    if (!found)
+        cout << "Item not found" <<endl;
+
+    // Print the student info list//
+    for (const auto& student : students) {
+        if (student.getID() != 0)
+            student.printInfo();
+    }
+
+    return 0;
+}

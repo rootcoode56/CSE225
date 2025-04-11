@@ -1,0 +1,77 @@
+#include "Stack.cpp"
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    Stack<int> Stack;
+
+    if (Stack.IsEmpty())
+    {
+        cout << "The stack is empty." << endl;
+    }
+    else
+    {
+        cout << "The stack is not empty." << endl;
+    }
+
+    Stack.Push(5);
+    Stack.Push(7);
+    Stack.Push(4);
+    Stack.Push(2);
+
+    if (Stack.IsEmpty())
+    {
+        cout << "The stack is empty." << endl;
+    }
+    else
+    {
+        cout << "The stack is not Full." << endl;
+    }
+
+
+    cout << "Values in the stack (in the order they were given as input): ";
+
+    Stack.Push(8);
+
+    if (Stack.IsFull())
+    {
+        cout << "The stack is Full." << endl;
+    }
+    else
+    {
+        cout << "The stack is not empty." << endl;
+    }
+
+    Stack.Pop(7);
+    Stack.Pop(2);
+
+    while (!Stack.IsEmpty())
+    {
+        Stack.Pop();
+    }
+
+    if (Stack.IsEmpty())
+    {
+        cout << "The stack is empty." << endl;
+    }
+    else
+    {
+        cout << "The stack is not empty." << endl;
+    }
+
+
+    while (!Stack.IsEmpty())
+    {
+        cout << Stack.Top() << " ";
+        Stack.Pop();
+    }
+    cout << endl;
+
+    cout << "Top item on stack: " << Stack.Top() << endl;
+    Stack.Pop();
+    Stack.pop();
+    cout << "Top item on stack: " << Stack.Top() << endl;
+
+    return 0;
+}

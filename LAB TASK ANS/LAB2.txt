@@ -1,0 +1,80 @@
+TASK1:
+
+#include "dynarr.cpp"
+#include <iostream>
+using namespace std;
+
+int main() {
+    dynArr obj1;   //Creating object for array using dynArr()//
+    dynArr obj2(5);//Creating object for array using dynArr(int)//
+
+    int value;
+    for(int i=0; i<5; i++) {
+        cout << "Enter value for index " << i << ": ";
+        cin >> value;
+        obj2.setValue(i, value);
+    }
+
+    cout << "Values in the second object are: ";
+    for(int i=0; i<5; i++) {
+        cout << obj2.getValue(i) << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+
+TASK2:
+
+// In dynarr.h
+void allocate(int);
+
+// In dynarr.cpp
+void dynArr::allocate(int s)//Defining class using :: // 
+{
+    int *newData = new int[s];
+    if(data != NULL) {
+        int minSize = (s < size) ? s : size;
+        for(int i=0; i<minSize; i++)
+            newData[i] = data[i];
+        delete [] data;
+    }
+    data = newData;
+    size = s;
+}
+
+
+TASK3:
+
+// In dynarr.h
+int **data;
+int rows, cols;
+dynArr(int, int);
+void setValue(int, int, int);// 3 int for 2 dimension array//
+int getValue(int, int);
+
+// In dynarr.cpp
+dynArr::dynArr(int r, int c)
+ {
+    data = new int*[r];
+    for(int i=0; i<r; i++)
+        data[i] = new int[c];
+    rows = r;
+    cols = c;
+}
+
+void dynArr::setValue(int r, int c, int value) {
+    data[r][c] = value;
+}
+
+int dynArr::getValue(int r, int c) {
+    return data[r][c];
+}
+
+dynArr::~dynArr() {
+    for(int i=0; i<rows; i++)
+        delete [] data[i];
+    delete [] data;
+}
+
+

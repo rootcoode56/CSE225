@@ -1,0 +1,94 @@
+
+...............................................................................
+//timeStamp.h//
+#ifndef TIMESTAMP_H_INCLUDED
+#define TIMESTAMP_H_INCLUDED
+
+class timeStamp {
+private:
+    int seconds;
+    int minutes;
+    int hours;
+
+public:
+    timeStamp();
+    timeStamp(int ss, int mm, int hh);
+
+    // Function to print time values
+    void printTime() const;
+
+    // Overloading > operator for comparison
+    bool operator>(const timeStamp& other) const;
+
+    // Overloading < operator for comparison
+    bool operator<(const timeStamp& other) const;
+
+    // Overloading == operator for comparison
+    bool operator==(const timeStamp& other) const;
+};
+
+#endif // TIMESTAMP_H_INCLUDED
+.................................................................................
+//timestamp.cpp//
+#include "timeStamp.h"
+#include <iostream>
+
+timeStamp::timeStamp() : seconds(0), minutes(0), hours(0) {}
+
+timeStamp::timeStamp(int ss, int mm, int hh) : seconds(ss), minutes(mm), hours(hh) {}
+
+void timeStamp::printTime() const {
+    std::cout << hours << ":" << minutes << ":" << seconds << std::endl;
+}
+
+bool timeStamp::operator>(const timeStamp& other) const {
+    if (hours != other.hours)
+        return hours > other.hours;
+    if (minutes != other.minutes)
+        return minutes > other.minutes;
+    return seconds > other.seconds;
+}
+
+bool timeStamp::operator<(const timeStamp& other) const {
+    if (hours != other.hours)
+        return hours < other.hours;
+    if (minutes != other.minutes)
+        return minutes < other.minutes;
+    return seconds < other.seconds;
+}
+
+bool timeStamp::operator==(const timeStamp& other) const {
+    return (hours == other.hours) && (minutes == other.minutes) && (seconds == other.seconds);
+}
+...................................................................................
+//main.cpp//
+
+#include <iostream>
+#include "sortedtype.h"
+#include "timeStamp.h"
+
+int main() {
+    SortedType<timeStamp> timeList;
+
+    // Inserting time values
+    timeList.InsertItem(timeStamp(23, 34, 15));
+    timeList.InsertItem(timeStamp(2, 13, 13));
+    timeList.InsertItem(timeStamp(12, 45, 43));
+    timeList.InsertItem(timeStamp(17, 36, 25));
+    timeList.InsertItem(timeStamp(20, 2, 52));
+
+    // Deleting the timestamp 25 36 17
+    timeStamp toDelete(17, 36, 25);
+    timeList.DeleteItem(toDelete);
+
+    // Printing the list
+    timeStamp currentTime;
+    int length = timeList.LengthIs();
+    timeList.ResetList();
+    for (int i = 0; i < length; ++i) {
+        timeList.GetNextItem(currentTime);
+        currentTime.printTime();
+    }
+
+    return 0;
+}

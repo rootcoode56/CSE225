@@ -1,0 +1,126 @@
+TASK1:
+
+dynarr.h
+
+#ifndef DYNARR_H_INCLUDED
+#define DYNARR_H_INCLUDED
+
+template <class T>
+class dynArr
+{
+private:
+    T *data;
+    int size;
+public:
+    dynArr(int);
+    ~dynArr();
+    void setValue(int, T);
+    T getValue(int);
+};
+
+#endif // DYNARR_H_INCLUDED
+
+
+dynarr.cpp
+
+#include "dynarr.h"
+#include <iostream>
+using namespace std;
+
+template <class T>
+dynArr<T>::dynArr(int s)
+{
+    data = new T[s];
+    size = s;
+}
+
+template <class T>
+dynArr<T>::~dynArr()
+{
+    delete [] data;
+}
+
+template <class T>
+T dynArr<T>::getValue(int index)
+{
+    return data[index];
+}
+
+template <class T>
+void dynArr<T>::setValue(int index, T value)
+{
+    data[index] = value;
+}
+
+
+
+
+
+
+
+
+
+
+TASK2:
+
+
+complex.h
+
+// complex.h
+#ifndef COMPLEX_H_INCLUDED
+#define COMPLEX_H_INCLUDED
+class Complex
+{
+public:
+    Complex();
+    Complex(double, double);
+    Complex operator+(Complex);
+    Complex operator*(Complex); // Overloaded multiplication operator
+    bool operator!=(Complex); // Overloaded not equal operator
+    void Print();
+private:
+    double Real, Imaginary;
+};
+#endif // COMPLEX_H_INCLUDED
+
+
+complex.cpp
+// complex.cpp
+#include "complex.h"
+#include <iostream>
+using namespace std;
+Complex::Complex()
+{
+    Real = 0;
+    Imaginary = 0;
+}
+Complex::Complex(double r, double i)
+{
+    Real = r;
+    Imaginary = i;
+}
+Complex Complex::operator+(Complex a)
+{
+    Complex t;
+    t.Real = Real + a.Real;
+    t.Imaginary = Imaginary + a.Imaginary;
+    return t;
+}
+Complex Complex::operator*(Complex a)
+{
+    Complex t;
+    t.Real = Real * a.Real - Imaginary * a.Imaginary;
+    t.Imaginary = Real * a.Imaginary + Imaginary * a.Real;
+    return t;
+}
+bool Complex::operator!=(Complex a)
+{
+    return (Real != a.Real || Imaginary != a.Imaginary);
+}
+void Complex::Print()
+{
+    cout << Real << endl;
+    cout << Imaginary << endl;
+}
+
+
