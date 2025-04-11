@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1710837963 source:c:\users\asif tanjim\documents\sortedlist\sortedtype.cpp
+	"sortedtype.h"
+
+1710837923 c:\users\asif tanjim\documents\sortedlist\sortedtype.h
+
+1710837987 source:c:\users\asif tanjim\documents\sortedlist\main.cpp
+	<iostream>
+	"sortedtype.h"
+	"timeStamp.h"
+
+1710838078 c:\users\asif tanjim\documents\sortedlist\timestamp.h
+
+1710837986 source:c:\users\asif tanjim\documents\sortedlist\timestamp.cpp
+	"timeStamp.h"
+	<iostream>
+

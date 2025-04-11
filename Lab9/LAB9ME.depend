@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1713712396 source:c:\users\asif tanjim\documents\lab9me\stacktype.cpp
+	<iostream>
+	"StackType.h"
+
+1713711743 c:\users\asif tanjim\documents\lab9me\stacktype.h
+
+1713716058 source:c:\users\asif tanjim\documents\lab9me\main.cpp
+	<iostream>
+	<string>
+	<stack>
+	"stacktype.cpp"
+
+1713712396 c:\users\asif tanjim\documents\lab9me\stacktype.cpp
+	<iostream>
+	"StackType.h"
+

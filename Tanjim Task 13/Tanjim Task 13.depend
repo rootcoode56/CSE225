@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1716373437 source:c:\users\asif tanjim\documents\tanjim task 13\queue.cpp
+	"queue.h"
+	<iostream>
+
+1716373380 c:\users\asif tanjim\documents\tanjim task 13\queue.h
+
+1716373452 source:c:\users\asif tanjim\documents\tanjim task 13\binarysearchtree.cpp
+	"binarysearchtree.h"
+	"queue.cpp"
+	<iostream>
+
+1716373423 c:\users\asif tanjim\documents\tanjim task 13\binarysearchtree.h
+	"queue.h"
+
+1716373437 c:\users\asif tanjim\documents\tanjim task 13\queue.cpp
+	"queue.h"
+	<iostream>
+
+1716377186 source:c:\users\asif tanjim\documents\tanjim task 13\main.cpp
+	<iostream>
+	"binarysearchtree.cpp"
+
+1716373452 c:\users\asif tanjim\documents\tanjim task 13\binarysearchtree.cpp
+	"binarysearchtree.h"
+	"queue.cpp"
+	<iostream>
+
+1716377224 source:c:\users\asif tanjim\documents\tanjim task 13\main2.cpp
+	<iostream>
+	"binarysearchtree.cpp"
+

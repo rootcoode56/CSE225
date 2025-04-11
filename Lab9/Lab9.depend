@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1713279870 source:c:\users\asif tanjim\documents\lab9\quetype.cpp
+	"QueType.h"
+
+1713279813 c:\users\asif tanjim\documents\lab9\quetype.h
+
+1713284800 source:c:\users\asif tanjim\documents\lab9\main.cpp
+	<iostream>
+	"quetype.cpp"
+
+1713279870 c:\users\asif tanjim\documents\lab9\quetype.cpp
+	"QueType.h"
+
