@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1714491101 source:c:\users\asif tanjim\documents\lab11riya\main.cpp
+	<iostream>
+	<climits>
+	"quetype.h"
+
+1714490999 c:\users\asif tanjim\documents\lab11riya\quetype.h
+
+1714490987 source:c:\users\asif tanjim\documents\lab11riya\quetype.cpp
+	"quetype.h"
+	<iostream>
+

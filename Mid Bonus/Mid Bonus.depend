@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1716546061 source:c:\users\asif tanjim\documents\mid bonus\binarysearchtree.cpp
+	"binarysearchtree.h"
+	"quetype.cpp"
+	<iostream>
+
+1716546115 c:\users\asif tanjim\documents\mid bonus\binarysearchtree.h
+	"quetype.h"
+
+1714490999 c:\users\asif tanjim\documents\mid bonus\quetype.h
+
+1714490987 c:\users\asif tanjim\documents\mid bonus\quetype.cpp
+	"quetype.h"
+	<iostream>
+
+1716546808 source:c:\users\asif tanjim\documents\mid bonus\main.cpp
+	<iostream>
+	"binarysearchtree.cpp"
+
+1716546061 c:\users\asif tanjim\documents\mid bonus\binarysearchtree.cpp
+	"binarysearchtree.h"
+	"quetype.cpp"
+	<iostream>
+
